@@ -134,6 +134,7 @@
     .toc-icon.c5 { background: #FDE8E9; }
     .toc-icon.c6 { background: #E9F0FB; }
     .toc-icon.c7 { background: #F3EFEA; }
+    .toc-icon.c8 { background: #E9F0FB; }
     .toc-label { font-size: 17px; font-weight: 600; color: #333; }
     .toc-num { font-family: 'Gowun Batang', serif; font-size: 13px; color: #999; margin-right: 4px; }
     .toc-arrow { color: #CD2E3A; font-size: 22px; font-weight: 600; flex-shrink: 0; }
@@ -156,6 +157,7 @@
     .chapter-icon.c5 { background: #FDE8E9; }
     .chapter-icon.c6 { background: #E9F0FB; }
     .chapter-icon.c7 { background: #F3EFEA; }
+    .chapter-icon.c8 { background: #E9F0FB; }
     .chapter-meta { flex: 1; }
     .chapter-tag { font-size: 12px; font-weight: 700; letter-spacing: 1px; color: #999; }
     .chapter-tag.c1 { color: #CD2E3A; }
@@ -165,6 +167,7 @@
     .chapter-tag.c5 { color: #B3232E; }
     .chapter-tag.c6 { color: #17559E; }
     .chapter-tag.c7 { color: #6B5B4E; }
+    .chapter-tag.c8 { color: #0047A0; }
     .chapter h2 {
       font-family: 'Gowun Batang', serif;
       font-size: 24px; font-weight: 700; color: #222;
@@ -389,6 +392,29 @@
     .warn-title { font-size: 17px; font-weight: 700; color: #222; line-height: 1.45; margin-bottom: 3px; }
     .warn-desc { font-size: 16px; color: #555; line-height: 1.6; }
 
+    /* 다운로드 카드 */
+    .download-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+    .download-card {
+      background: #fff; border-radius: 14px; padding: 14px 16px;
+      box-shadow: 0 1px 4px rgba(90,70,70,0.05);
+      border: 1px solid #F3E9DE;
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: #222;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .download-card:active { border-color: #CD2E3A; background: #FFF6F3; }
+    .dl-icon {
+      flex-shrink: 0; width: 44px; height: 44px; border-radius: 11px;
+      background: #FDE8E9; color: #CD2E3A; font-size: 22px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .download-card.blue .dl-icon { background: #E9F0FB; color: #0047A0; }
+    .dl-info { flex: 1; min-width: 0; }
+    .dl-name { font-size: 17px; font-weight: 700; color: #222; margin-bottom: 2px; line-height: 1.4; }
+    .dl-meta { font-size: 15px; color: #666; }
+    .dl-arrow { flex-shrink: 0; font-size: 22px; color: #CD2E3A; font-weight: 700; }
+    .download-card.blue .dl-arrow { color: #0047A0; }
+
     /* 클로징 */
     .closing-card {
       background: linear-gradient(135deg, #FFF6F3 0%, #FFFDF6 50%, #F2F6FC 100%);
@@ -520,6 +546,13 @@
       .warn-title { font-size: 19px; }
       .warn-desc { font-size: 17px; }
 
+      .download-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .download-card { padding: 18px 20px; border-radius: 16px; transition: transform 0.2s, box-shadow 0.2s, border-color 0.15s; }
+      .download-card:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(90,70,70,0.1); border-color: #F0C4C7; }
+      .dl-icon { width: 52px; height: 52px; font-size: 26px; border-radius: 13px; }
+      .dl-name { font-size: 18px; }
+      .dl-meta { font-size: 15px; }
+
       .closing-card { padding: 32px 24px; margin-top: 36px; border-radius: 18px; }
       .closing-card .ck-line { font-size: 22px; }
       .closing-card .ck-sub { font-size: 16px; }
@@ -621,6 +654,13 @@
         <span class="toc-left">
           <span class="toc-icon c7">⚠️</span>
           <span class="toc-label"><span class="toc-num">07</span>유의사항</span>
+        </span>
+        <span class="toc-arrow">&rsaquo;</span>
+      </a>
+      <a class="toc-item" href="#ch8">
+        <span class="toc-left">
+          <span class="toc-icon c8">📥</span>
+          <span class="toc-label"><span class="toc-num">08</span>도안 다운로드</span>
         </span>
         <span class="toc-arrow">&rsaquo;</span>
       </a>
@@ -772,7 +812,7 @@
           <strong>💡 색연필은 이 3색이면 충분:</strong> 다른 색도 함께 두시면 어르신께서 자유롭게 고르실 수 있어 더 좋습니다.
         </div>
         <div class="note-box blue">
-          <strong>📄 도안은 센터에 문의:</strong> 원본 프로그램에 첨부된 도안 1·2를 인쇄해 사용합니다.
+          <strong>📄 도안은 아래에서 받으세요:</strong> <a href="#ch8" style="color:#0047A0;font-weight:700;">08 도안 다운로드</a>에서 A4로 출력하시면 됩니다.
         </div>
       </div>
 
@@ -1078,6 +1118,48 @@
               <div class="warn-desc">가위 방향을 확인하고, 진행자가 가까이에서 살펴봐 주세요.</div>
             </div>
           </div>
+        </div>
+
+      </div>
+
+      <!-- ===== 챕터 8 ===== -->
+      <div class="chapter" id="ch8">
+        <div class="chapter-header">
+          <span class="chapter-icon c8">📥</span>
+          <div class="chapter-meta">
+            <div class="chapter-tag c8">CHAPTER 8</div>
+            <h2>도안 다운로드</h2>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <p>진행에 필요한 <strong>도안 두 장</strong>입니다. <strong>A4 가로</strong>로 출력해서 사용하세요.</p>
+        </div>
+
+        <div class="download-list">
+          <a class="download-card" href="printables/taegeukgi/dogan1_taegeuk.pdf" download>
+            <span class="dl-icon">📄</span>
+            <div class="dl-info">
+              <div class="dl-name">도안 1 — 태극 모양</div>
+              <div class="dl-meta">A4 가로 · 태극 색칠 + 4괘 붙일 자리</div>
+            </div>
+            <span class="dl-arrow">↓</span>
+          </a>
+          <a class="download-card blue" href="printables/taegeukgi/dogan2_4gwae.pdf" download>
+            <span class="dl-icon">✂️</span>
+            <div class="dl-info">
+              <div class="dl-name">도안 2 — 4괘 모양</div>
+              <div class="dl-meta">A4 가로 · 4괘 색칠 후 오리기</div>
+            </div>
+            <span class="dl-arrow">↓</span>
+          </a>
+        </div>
+
+        <div class="note-box">
+          <strong>📄 배부 순서:</strong> 도안 1을 먼저 드리고, 태극 색칠이 끝난 뒤에 도안 2를 드립니다.
+        </div>
+        <div class="note-box blue">
+          <strong>ⓒ 자료 출처:</strong> 한국노인통합교육개발원 인지자극 프로그램 「태극기 휘날리며」 첨부 도안
         </div>
 
         <div class="closing-card">
