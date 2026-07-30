@@ -7,58 +7,89 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+    
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
       font-family: 'Noto Sans KR', sans-serif;
       background: #f5f5f5;
       color: #222;
       min-height: 100vh;
+    }
+
+    /* 상단 컬러 포인트 바 */
+    .top-accent { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      height: 6px; 
+      background: linear-gradient(90deg, #3B6CB5, #7C6BC4, #5BA88C); 
+      z-index: 10; 
+    }
+
+    /* 레이아웃 래퍼 */
+    .pc-wrapper {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 60px 20px 40px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 60px 20px;
+      min-height: 100vh;
     }
-    .top-accent { position: fixed; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #3B6CB5, #7C6BC4, #5BA88C); z-index: 10; }
-    h1 { font-size: 32px; font-weight: 700; color: #1a1a2e; margin-bottom: 8px; }
-    .subtitle { font-size: 16px; color: #888; margin-bottom: 40px; }
-    .card-list { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 700px; }
+
+    h1 { font-size: 32px; font-weight: 700; color: #1a1a2e; margin-bottom: 8px; text-align: center; }
+    .subtitle { font-size: 16px; color: #888; margin-bottom: 40px; text-align: center; }
+    
+    .card-list { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 16px; 
+      width: 100%; 
+    }
+
     .card {
       background: #fff;
       border-radius: 16px;
       padding: 28px 32px;
       text-decoration: none;
       color: #222;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
       border: 1px solid #e0e0e0;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
+
     .card:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 24px rgba(59,108,181,0.15);
       border-color: #3B6CB5;
     }
+
     .card .label { font-size: 13px; font-weight: 600; color: #3B6CB5; letter-spacing: 1px; margin-bottom: 6px; }
     .card .title { font-size: 20px; font-weight: 600; color: #1a1a2e; margin-bottom: 4px; }
     .card .desc { font-size: 14px; color: #888; }
-    .footer { margin-top: 50px; font-size: 13px; color: #bbb; }
+    
+    .footer { 
+      margin-top: auto; 
+      padding-top: 50px; 
+      font-size: 13px; 
+      color: #bbb; 
+      text-align: center; 
+    }
 
     /* ===== PC 반응형 (768px 이상) ===== */
     @media (min-width: 768px) {
       body {
         background: #e8eaf0;
-        padding: 0;
       }
 
       .pc-wrapper {
         max-width: 1100px;
-        margin: 0 auto;
         background: #f5f5f5;
-        min-height: 100vh;
         box-shadow: 0 0 40px rgba(0,0,0,0.08);
-        padding: 80px 60px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        padding: 80px 60px 50px;
       }
 
       .top-accent {
@@ -74,31 +105,32 @@
         flex-direction: row;
         flex-wrap: wrap;
         gap: 20px;
-        max-width: 100%;
       }
+
       .card {
         flex: 1 1 calc(33.333% - 20px);
-        min-width: 220px;
+        min-width: 280px;
         padding: 36px 32px;
         border-radius: 20px;
-        transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
       }
+
       .card:hover {
         transform: translateY(-6px);
         box-shadow: 0 12px 32px rgba(59,108,181,0.15);
-        border-color: #3B6CB5;
       }
+
       .card .label { font-size: 14px; margin-bottom: 8px; }
       .card .title { font-size: 22px; margin-bottom: 8px; }
       .card .desc { font-size: 15px; line-height: 1.6; }
 
-      .footer { margin-top: 60px; font-size: 14px; }
+      .footer { font-size: 14px; }
     }
 
+    /* ===== 대형 화면 반응형 (1200px 이상) ===== */
     @media (min-width: 1200px) {
       .pc-wrapper {
         max-width: 1200px;
-        padding: 100px 80px;
+        padding: 100px 80px 60px;
       }
       .top-accent { max-width: 1200px; }
       h1 { font-size: 44px; }
@@ -106,76 +138,68 @@
   </style>
 </head>
 <body>
+
   <div class="top-accent"></div>
+
   <div class="pc-wrapper">
     <h1>직원 교육 자료</h1>
     <p class="subtitle">아래 교육 과정을 선택하세요</p>
-  <div class="card-list">
-    <a class="card" href="dementia.html">
-      <div class="label">급여제공지침 교육</div>
-      <div class="title">치매예방 및 관리지침</div>
-      <div class="desc">치매의 정의, 증상, 단계별 변화, 예방수칙 및 돌봄 관리 지침</div>
-    </a>
-    <a class="card" href="cognitive.html">
-      <div class="label">역량강화 교육</div>
-      <div class="title">인지프로그램 대화법</div>
-      <div class="desc">회상활동, 지남력 훈련, 오감자극 — 어르신 인지 기능을 향상시키는 세 가지 대화법</div>
-    </a>
-    <a class="card" href="hometown-spring.html">
-      <div class="label">인지자극 프로그램 (5등급)</div>
-      <div class="title">고향의 봄</div>
-      <div class="desc">동요로 떠나는 어린 시절 봄나들이 — 노래·회상·언어 자극 프로그램</div>
-    </a>
-    <a class="card" href="taegeukgi.html">
-      <div class="label">인지자극 프로그램 (5등급)</div>
-      <div class="title">태극기 휘날리며</div>
-      <div class="desc">태극 색칠·4괘 오려 붙이기 — 손을 쓰며 기억을 꺼내는 프로그램</div>
-    </a>
-    <a class="card" href="human-rights.html">
-      <div class="label">급여제공지침 교육</div>
-      <div class="title">노인인권보호지침</div>
-      <div class="desc">노인인권의 정의, 학대 유형 6가지, 신고의무, 예방과 대처법</div>
-    </a>
-    <a class="card" href="staff-rights.html">
-      <div class="label">급여제공지침 교육</div>
-      <div class="title">직원 인권침해 대응지침</div>
-      <div class="desc">폭언·폭행·성희롱 대응 3단계, 기관 4단계 조치, 급여 외 행위 거절, 지원 기관</div>
-    </a>
-    <a class="card" href="fall-prevention.html">
-      <div class="label">급여제공지침 교육</div>
-      <div class="title">낙상예방 및 관리지침</div>
-      <div class="desc">낙상의 세 가지 요인, 예방 방법 7가지, 직원 현장 대응, 낙상예방 체조, 발생 시 조치</div>
-    </a>
-    <a class="card" href="pressure-ulcer.html">
-      <div class="label">급여제공지침 교육</div>
-      <div class="title">욕창예방 및 관리지침</div>
-      <div class="desc">욕창의 정의·단계, 발생요인 일곱 가지, 의심 신호, 예방 방법 여섯 묶음, 발견 시 보고</div>
-    </a>
-    <a class="card" href="infection-prevention.html">
-      <div class="label">급여제공지침 교육</div>
-      <div class="title">감염예방 및 관리지침</div>
-      <div class="desc">감염경로 세 가지, 주요 감염병, 표준주의, 손 씻기 여섯 단계, 개인보호장구, 환경관리, 보고</div>
-    </a>
-    <a class="card" href="emergency-response.html">
-      <div class="label">급여제공지침 교육</div>
-      <div class="title">응급상황 대응지침</div>
-      <div class="desc">응급상황 대응체계, 기본 원칙, 14가지 응급상황별 대응방법 (낙상·질식·경련·심장마비·CPR 등)</div>
-    </a>
-    <a class="card" href="grievance.html">
-      <div class="label">기타지침 교육</div>
-      <div class="title">고충처리지침</div>
-      <div class="desc">고충 접수 방법(오프라인·온라인), 익명성 보장, 처리 과정과 기한</div>
-    </a>
-    <a class="card" href="workplace-harassment.html">
-      <div class="label">법정 의무교육</div>
-      <div class="title">직장 내 성희롱 예방교육</div>
-      <div class="desc">판단 기준, 센터의 처리 절차 5단계와 조치 기준, 상담·신고 창구, 신고자 보호</div>
-    </a>
-    <a class="card" href="advance-directive.html">
-      <div class="label">제도 안내 교육</div>
-      <div class="title">연명의료결정 제도 안내</div>
-      <div class="desc">연명의료결정법, 사전연명의료의향서, 연명의료계획서, 요양보호사 역할</div>
-    </a>
+
+    <div class="card-list">
+      <a class="card" href="dementia.html">
+        <div class="label">급여제공지침 교육</div>
+        <div class="title">치매예방 및 관리지침</div>
+        <div class="desc">치매의 정의, 증상, 단계별 변화, 예방수칙 및 돌봄 관리 지침</div>
+      </a>
+      <a class="card" href="human-rights.html">
+        <div class="label">급여제공지침 교육</div>
+        <div class="title">노인인권보호지침</div>
+        <div class="desc">노인인권의 정의, 학대 유형 6가지, 신고의무, 예방과 대처법</div>
+      </a>
+      <a class="card" href="staff-rights.html">
+        <div class="label">급여제공지침 교육</div>
+        <div class="title">직원 인권침해 대응지침</div>
+        <div class="desc">폭언·폭행·성희롱 대응 3단계, 기관 4단계 조치, 급여 외 행위 거절, 지원 기관</div>
+      </a>
+      <a class="card" href="fall-prevention.html">
+        <div class="label">급여제공지침 교육</div>
+        <div class="title">낙상예방 및 관리지침</div>
+        <div class="desc">낙상의 세 가지 요인, 예방 방법 7가지, 직원 현장 대응, 낙상예방 체조, 발생 시 조치</div>
+      </a>
+      <a class="card" href="pressure-ulcer.html">
+        <div class="label">급여제공지침 교육</div>
+        <div class="title">욕창예방 및 관리지침</div>
+        <div class="desc">욕창의 정의·단계, 발생요인 일곱 가지, 의심 신호, 예방 방법 여섯 묶음, 발견 시 보고</div>
+      </a>
+      <a class="card" href="infection-prevention.html">
+        <div class="label">급여제공지침 교육</div>
+        <div class="title">감염예방 및 관리지침</div>
+        <div class="desc">감염경로 세 가지, 주요 감염병, 표준주의, 손 씻기 여섯 단계, 개인보호장구, 환경관리, 보고</div>
+      </a>
+      <a class="card" href="emergency-response.html">
+        <div class="label">급여제공지침 교육</div>
+        <div class="title">응급상황 대응지침</div>
+        <div class="desc">응급상황 대응체계, 기본 원칙, 14가지 응급상황별 대응방법 (낙상·질식·경련·심장마비·CPR 등)</div>
+      </a>
+      <a class="card" href="grievance.html">
+        <div class="label">기타지침 교육</div>
+        <div class="title">고충처리지침</div>
+        <div class="desc">고충 접수 방법(오프라인·온라인), 익명성 보장, 처리 과정과 기한</div>
+      </a>
+      <a class="card" href="workplace-harassment.html">
+        <div class="label">법정 의무교육</div>
+        <div class="title">직장 내 성희롱 예방교육</div>
+        <div class="desc">판단 기준, 센터의 처리 절차 5단계와 조치 기준, 상담·신고 창구, 신고자 보호</div>
+      </a>
+      <a class="card" href="advance-directive.html">
+        <div class="label">제도 안내 교육</div>
+        <div class="title">연명의료결정 제도 안내</div>
+        <div class="desc">연명의료결정법, 사전연명의료의향서, 연명의료계획서, 요양보호사 역할</div>
+      </a>
+    </div>
+
+    <p class="footer">&copy; 2026 직원 교육 포털</p>
   </div>
-  <p class="footer">&copy; 2026 직원 교육 포털</p>
-  </div><!-- /pc-wrapper -->
+
+</body>
+</html>
