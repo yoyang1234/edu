@@ -207,7 +207,6 @@
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
-    .channel-card.online .ch-num { background: #F97316; }
     .channel-card .ch-title {
       font-size: 20px; font-weight: 800;
       color: #1a1a2e;
@@ -225,75 +224,11 @@
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    .channel-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 18px;
-      background: #F97316;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 12px;
-      font-size: 18px; font-weight: 700;
-      box-shadow: 0 2px 8px rgba(249,115,22,0.3);
-    }
-    .channel-cta:active { background: #EA580C; }
     .channel-caption {
       display: block;
       text-align: center;
       font-size: 17px; color: #555;
       margin-top: 4px;
-    }
-
-    /* 온라인 2단계 플로우 */
-    .online-flow {
-      margin: 8px 0 4px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-    }
-    .flow-step {
-      width: 100%;
-      max-width: 320px;
-      text-align: center;
-    }
-    .flow-img {
-      width: 100%;
-      max-width: 320px;
-      border-radius: 12px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-      display: block;
-      margin: 0 auto;
-    }
-    .flow-cap {
-      font-size: 17px;
-      color: #333;
-      margin-top: 8px;
-      line-height: 1.5;
-      word-break: keep-all;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    .flow-num {
-      width: 22px; height: 22px;
-      border-radius: 50%;
-      background: #F97316;
-      color: #fff;
-      font-size: 13px; font-weight: 800;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .flow-arrow {
-      font-size: 22px;
-      color: #F97316;
-      font-weight: 800;
-      line-height: 1;
     }
 
     /* 연락처 카드 — 그 외 접수 방법 */
@@ -323,9 +258,7 @@
       -webkit-tap-highlight-color: transparent;
     }
     .contact-row:last-child { border-bottom: none; }
-    .contact-row:active { background: #f0fdfa; }
     .contact-row.static { cursor: default; }
-    .contact-row.static:active { background: transparent; }
     .contact-ico {
       font-size: 18px;
       flex-shrink: 0;
@@ -353,29 +286,6 @@
     .contact-row.static .contact-value {
       color: #222;
       font-weight: 500;
-    }
-
-    /* 익명성 안내 카드 */
-    .anon-card {
-      background: linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%);
-      border-radius: 14px;
-      padding: 18px;
-      margin-bottom: 10px;
-      border: 1px solid #5EEAD4;
-    }
-    .anon-card .anon-title {
-      font-size: 20px; font-weight: 800;
-      color: #134E4A;
-      margin-bottom: 8px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .anon-card p {
-      font-size: 19px; color: #134E4A;
-      line-height: 1.7;
-    }
-    .anon-card .anon-hint {
-      font-size: 17px; color: #0F766E;
-      margin-top: 6px;
     }
 
     /* 핵심 원칙 4가지 카드 */
@@ -569,7 +479,6 @@
     }
     .fab-top.show { opacity: 1; pointer-events: auto; }
 
-    .pc-wrapper { }
     .channel-grid-pc {
       display: flex;
       flex-direction: column;
@@ -645,7 +554,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 14px;
-        align-items: start;
+        align-items: stretch;
       }
       .channel-card {
         transition: transform 0.2s, box-shadow 0.2s;
@@ -656,13 +565,7 @@
       }
       .channel-photo { max-width: 100%; }
 
-      .online-flow {
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-      }
-      .flow-step { max-width: 260px; }
-      .flow-img { max-width: 260px; }
+      .contact-card { margin-top: 0; }
 
       .core-principles {
         display: grid;
@@ -730,37 +633,37 @@
 
   <div class="pc-wrapper">
     <div class="top-bar">
-      <a href="index.html">&larr; 목록</a>
+      <a href="index.html">← 목록</a>
       <span class="title">고충처리지침</span>
     </div>
 
     <!-- 히어로 -->
     <div class="hero" id="heroArea">
       <h1>고충처리지침</h1>
-      <p class="sub">(주)효자노치원 &middot; 요양보호사 교육</p>
+      <p class="sub">(주)효자노치원 · 요양보호사 교육</p>
     </div>
 
     <!-- 목차 -->
     <nav class="toc" id="tocArea">
       <a class="toc-item" href="#ch1">
         <span class="toc-left"><span class="toc-icon c1">💬</span><span class="toc-label c1">고충처리란</span></span>
-        <span class="toc-arrow">&rsaquo;</span>
+        <span class="toc-arrow">›</span>
       </a>
       <a class="toc-item" href="#ch2">
         <span class="toc-left"><span class="toc-icon c2">📮</span><span class="toc-label c2">접수 방법</span></span>
-        <span class="toc-arrow">&rsaquo;</span>
+        <span class="toc-arrow">›</span>
       </a>
       <a class="toc-item" href="#ch3">
         <span class="toc-left"><span class="toc-icon c3">⚖️</span><span class="toc-label c3">기본원칙</span></span>
-        <span class="toc-arrow">&rsaquo;</span>
+        <span class="toc-arrow">›</span>
       </a>
       <a class="toc-item" href="#ch4">
         <span class="toc-left"><span class="toc-icon c4">🔄</span><span class="toc-label c4">처리 과정</span></span>
-        <span class="toc-arrow">&rsaquo;</span>
+        <span class="toc-arrow">›</span>
       </a>
       <a class="toc-item" href="#ch5">
         <span class="toc-left"><span class="toc-icon c5">⏱️</span><span class="toc-label c5">처리 기한</span></span>
-        <span class="toc-arrow">&rsaquo;</span>
+        <span class="toc-arrow">›</span>
       </a>
     </nav>
 
@@ -791,90 +694,60 @@
         </div>
 
         <div class="highlight-line" style="background:#E0F2FE; border-color:#7DD3FC; color:#0C4A6E; margin-top:10px; margin-bottom:0;">
-          <span>👥</span> 직원뿐 아니라 <strong>수급자(어르신)</strong>의 고충도 함께 처리합니다
+          <span>👥</span> 직원뿐 아니라 <strong>수급자(어르신)</strong>의 고충도 함께 처리합니다.
         </div>
       </div>
 
-<!-- ===== 챕터 2 — 접수 방법 ===== -->
-<div class="chapter" id="ch2">
-  <div class="chapter-header">
-    <div class="chapter-icon c2">📮</div>
-    <div class="chapter-meta">
-      <span class="tag c2">CHAPTER 2</span>
-      <h2>접수 방법 — 두 가지 창구</h2>
-    </div>
-  </div>
-
-  <div class="highlight-line" style="background:#FEF3C7; border-color:#FCD34D; color:#78350F;">
-    <span>📮</span> 편한 방법으로 <strong>언제든지</strong> 접수하세요
-  </div>
-
-  <div class="channel-grid-pc">
-    <!-- 오프라인 -->
-    <div class="channel-card">
-      <div class="ch-head">
-        <span class="ch-num">1</span>
-        <span class="ch-title">사무실 고충처리함</span>
-      </div>
-      <p class="ch-desc">센터 사무실에 비치된 고충처리함에 쪽지를 넣어주세요.</p>
-      <img class="channel-photo" src="images/grievance-box.jpg" alt="사무실 고충처리함">
-      <span class="channel-caption">📍 센터 사무실 비치</span>
-    </div>
-
-    <!-- 온라인 -->
-    <div class="channel-card online">
-      <div class="ch-head">
-        <span class="ch-num">2</span>
-        <span class="ch-title">온라인 고충처리함</span>
-      </div>
-      <p class="ch-desc">센터 <strong>카카오톡 채널</strong>에서 언제 어디서든 작성</p>
-
-      <!-- 2단계 시각 안내 -->
-      <div class="online-flow">
-        <div class="flow-step">
-          <img class="flow-img" src="images/kakao-channel.jpg" alt="카카오 채널 메뉴">
-          <div class="flow-cap"><span class="flow-num">1</span> 채널 메뉴 → <strong>고충처리함</strong> 클릭</div>
+      <!-- ===== 챕터 2 — 접수 방법 ===== -->
+      <div class="chapter" id="ch2">
+        <div class="chapter-header">
+          <div class="chapter-icon c2">📮</div>
+          <div class="chapter-meta">
+            <span class="tag c2">CHAPTER 2</span>
+            <h2>접수 방법</h2>
+          </div>
         </div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-step">
-          <img class="flow-img" src="images/online-form.jpg" alt="온라인 고충처리 폼 화면">
-          <div class="flow-cap"><span class="flow-num">2</span> <strong>익명으로 작성</strong> 후 제출</div>
+
+        <div class="highlight-line" style="background:#FEF3C7; border-color:#FCD34D; color:#78350F;">
+          <span>📮</span> 편한 방법으로 <strong>언제든지</strong> 접수하세요
+        </div>
+
+        <div class="channel-grid-pc">
+          <!-- 오프라인 고충처리함 -->
+          <div class="channel-card">
+            <div class="ch-head">
+              <span class="ch-num">1</span>
+              <span class="ch-title">사무실 고충처리함</span>
+            </div>
+            <p class="ch-desc">센터 사무실에 비치된 고충처리함에 쪽지를 넣어주세요.</p>
+            <img class="channel-photo" src="images/grievance-box.jpg" alt="사무실 고충처리함">
+            <span class="channel-caption">📍 센터 사무실 비치</span>
+          </div>
+
+          <!-- 그 외 접수 방법 — 연락처 -->
+          <div class="contact-card">
+            <div class="contact-title">📞 그 외 접수 방법</div>
+            
+            <div class="contact-row">
+              <span class="contact-ico">☎️</span>
+              <span class="contact-label">전화 · 문자</span>
+              <span class="contact-value">031-217-1000</span>
+            </div>
+            
+            <div class="contact-row">
+              <span class="contact-ico">✉️</span>
+              <span class="contact-label">이메일</span>
+              <span class="contact-value">pureland016@naver.com</span>
+            </div>
+            
+            <div class="contact-row static">
+              <span class="contact-ico">📍</span>
+              <span class="contact-label">방문</span>
+              <span class="contact-value">경기도 수원시 권선구 경수대로 379, 3층</span>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div style="text-align:center; margin-top:14px;">
-        <a class="channel-cta" href="https://naver.me/Fl2bzFJu" target="_blank" rel="noopener">
-          <span>💬</span><span>온라인 고충처리함 바로가기</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- 그 외 접수 방법 — 연락처 -->
-<div class="contact-card">
-  <div class="contact-title">📞 그 외 접수 방법</div>
-  
-  <!-- 1. 전화·문자 (a 태그 -> div 변경) -->
-  <div class="contact-row">
-    <span class="contact-ico">☎️</span>
-    <span class="contact-label">전화 · 문자</span>
-    <span class="contact-value">031-217-1000</span>
-  </div>
-  
-  <!-- 2. 이메일 (a 태그 -> div 변경) -->
-  <div class="contact-row">
-    <span class="contact-ico">✉️</span>
-    <span class="contact-label">이메일</span>
-    <span class="contact-value">pureland016@naver.com</span>
-  </div>
-  
-  <!-- 3. 방문 -->
-  <div class="contact-row static">
-    <span class="contact-ico">📍</span>
-    <span class="contact-label">방문</span>
-    <span class="contact-value">경기도 수원시 권선구 경수대로 379, 3층</span>
-  </div>
-</div>
 
       <!-- ===== 챕터 3 — 기본원칙 ===== -->
       <div class="chapter" id="ch3">
@@ -922,7 +795,7 @@
           </div>
         </div>
 
-        <!-- 그 외 원칙 3가지 (약하게) -->
+        <!-- 그 외 원칙 3가지 -->
         <div class="sub-principles">
           <div class="sp-title">그 외 원칙</div>
           <div class="sp-row">
@@ -955,7 +828,7 @@
             <span class="stage-num">1</span>
             <div class="stage-body">
               <div class="stage-name">접수</div>
-              <div class="stage-desc">고충처리함·카카오 채널로 접수된 내용을 <strong>담당자가 확인</strong>합니다.</div>
+              <div class="stage-desc">고충처리함으로 접수된 내용을 <strong>담당자가 확인</strong>합니다.</div>
             </div>
           </div>
 
@@ -1025,7 +898,7 @@
   </div><!-- /pc-wrapper -->
 
   <!-- 플로팅 목차 버튼 -->
-  <a href="#tocArea" class="fab-top" id="fabTop" aria-label="목차로 이동">&uarr;</a>
+  <a href="#tocArea" class="fab-top" id="fabTop" aria-label="목차로 이동">↑</a>
 
   <script>
     var progressBar = document.getElementById('progressBar');
