@@ -1,448 +1,100 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>직장 내 성희롱 예방교육 - (주)효자노치원</title>
-  <style>
-    /* 기본 리셋 및 스타일링 */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: #F8F9FA;
-      color: #333333;
-      line-height: 1.6;
-      word-break: keep-all;
-    }
-    
-    /* 상단 프로그레스바 */
-    .progress-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: rgba(0,0,0,0.05);
-      z-index: 1000;
-    }
-    .progress-bar {
-      height: 100%;
-      background: #8A6314;
-      width: 0%;
-      transition: width 0.1s ease;
-    }
-
-    .pc-wrapper {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px 16px 40px;
-    }
-
-    /* 목차 영역 */
-    .toc-area {
-      background: #FFFFFF;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-    .toc-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: #1A1A1A;
-    }
-    .toc-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 8px;
-    }
-    .toc-list a {
-      text-decoration: none;
-      color: #4A5568;
-      font-size: 14px;
-      padding: 6px 10px;
-      background: #F1F5F9;
-      border-radius: 6px;
-      display: block;
-      transition: background 0.2s;
-    }
-    .toc-list a:hover {
-      background: #E2E8F0;
-      color: #1A202C;
-    }
-
-    /* 챕터 공통 */
-    .chapter {
-      background: #FFFFFF;
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-    .chapter-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #F1F5F9;
-      padding-bottom: 12px;
-    }
-    .chapter-icon { font-size: 28px; }
-    .chapter-tag {
-      font-size: 12px;
-      font-weight: 700;
-      color: #8A6314;
-      letter-spacing: 0.5px;
-    }
-    .chapter-header h2 {
-      font-size: 20px;
-      color: #1A1A1A;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .chapter-badge {
-      background: #E53E3E;
-      color: #FFFFFF;
-      font-size: 11px;
-      padding: 2px 6px;
-      border-radius: 4px;
-      vertical-align: middle;
-    }
-
-    /* 카드리스트 및 컴포넌트 */
-    .info-card {
-      background: #F8FAFC;
-      border-left: 4px solid #8A6314;
-      padding: 16px;
-      border-radius: 0 8px 8px 0;
-      margin-bottom: 16px;
-    }
-    .protect-list, .split-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    @media (min-width: 768px) {
-      .protect-list { grid-template-columns: repeat(2, 1fr); }
-      .split-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    .protect-card, .split-card {
-      background: #F8FAFC;
-      border: 1px solid #E2E8F0;
-      border-radius: 8px;
-      padding: 16px;
-      display: flex;
-      gap: 12px;
-    }
-    .split-card { flex-direction: column; gap: 6px; }
-    .split-card.other { background: #FAF5FF; border-color: #E9D8FD; }
-    .protect-icon { font-size: 24px; }
-    .protect-title, .split-who { font-weight: 700; color: #2D3748; font-size: 15px; }
-    .split-who { color: #8A6314; }
-    .protect-desc, .split-desc { font-size: 14px; color: #4A5568; }
-
-    .no-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
-    .no-chip {
-      background: #EDF2F7;
-      color: #2D3748;
-      font-size: 13px;
-      padding: 6px 12px;
-      border-radius: 16px;
-    }
-
-    .accent-banner {
-      background: #FFF5F5;
-      border: 1px solid #FEB2B2;
-      border-radius: 8px;
-      padding: 16px;
-      margin-top: 16px;
-    }
-    .ab-title { font-weight: 700; color: #C53030; margin-bottom: 4px; }
-
-    .desk-card {
-      background: #F0FDF4;
-      border: 1px solid #BBF7D0;
-      border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 16px;
-    }
-    .desk-name { font-weight: 700; color: #166534; font-size: 16px; margin-bottom: 4px; }
-    .desk-tag {
-      background: #22C55E;
-      color: #FFFFFF;
-      font-size: 11px;
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-left: 8px;
-    }
-    .desk-how { font-size: 14px; color: #15803D; }
-
-    .note-box {
-      background: #FEFCE8;
-      border: 1px solid #FEF08A;
-      border-radius: 8px;
-      padding: 14px;
-      font-size: 14px;
-      color: #713F12;
-      margin-bottom: 16px;
-    }
-
-    .outside-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 10px;
-    }
-    .outside-item {
-      background: #F8FAFC;
-      border: 1px solid #E2E8F0;
-      padding: 12px;
-      border-radius: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .outside-name { font-size: 13px; font-weight: 600; color: #334155; }
-    .outside-tel { font-size: 13px; font-weight: 700; color: #8A6314; }
-
-    .closing-card {
-      background: #2D3748;
-      color: #FFFFFF;
-      border-radius: 8px;
-      padding: 24px;
-      text-align: center;
-      margin-bottom: 16px;
-    }
-    .ck-line { font-size: 18px; font-weight: 700; line-height: 1.4; margin-bottom: 16px; }
-    .closing-badges {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    .closing-badges span {
-      background: rgba(255,255,255,0.15);
-      padding: 4px 10px;
-      border-radius: 12px;
-      font-size: 12px;
-    }
-    .ck-sub { font-size: 13px; color: #A0AEC0; }
-
-    .legal-box {
-      font-size: 12px;
-      color: #64748B;
-      line-height: 1.5;
-      background: #F1F5F9;
-      padding: 12px;
-      border-radius: 6px;
-    }
-
-    .footer-note { text-align: center; font-size: 13px; color: #94A3B8; margin-top: 24px; }
-
-    /* FAB 버튼 */
-    .fab-top {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 44px;
-      height: 44px;
-      background: #8A6314;
-      color: #FFFFFF;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-size: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.2s, visibility 0.2s;
-    }
-    .fab-top.show {
-      opacity: 1;
-      visibility: visible;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="progress-container">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
-
-  <div class="pc-wrapper">
-    <div class="toc-area" id="tocArea">
-      <div class="toc-title">목차</div>
-      <ul class="toc-list">
-        <li><a href="#ch5">CHAPTER 5. 상담·신고 창구</a></li>
-        <li><a href="#ch6">CHAPTER 6. 말한 사람의 보호</a></li>
-        <li><a href="#ch7">CHAPTER 7. 관리자와 직원의 책임</a></li>
-      </ul>
-    </div>
-
-    <!-- ===== 챕터 5 ===== -->
-    <div class="chapter" id="ch5">
-      <div class="chapter-header">
-        <span class="chapter-icon">💬</span>
-        <div class="chapter-meta">
-          <div class="chapter-tag">CHAPTER 5</div>
-          <h2>상담·신고 창구<span class="chapter-badge">필수</span></h2>
+ <div class="info-card">
+          <p>말씀하시는 것이 걱정되실 수 있습니다. 그래서 센터는 <strong>네 가지로 보호</strong>합니다.</p>
         </div>
-      </div>
 
-      <div class="info-card">
-        <p>센터의 접수 창구는 <strong>고충처리함입니다</strong>. 피해를 입은 본인이 아니어도, <strong>피해자의 동의가 없어도</strong> 신고할 수 있습니다.</p>
-      </div>
-
-      <div class="desk-list">
-        <div class="desk-card">
-          <div class="desk-name">사무실 고충처리함<span class="desk-tag">익명</span></div>
-          <div class="desk-how">센터 사무실에 비치된 고충처리함에 <strong>쪽지를 넣어</strong> 주세요.</div>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <p><strong>그 외 접수 방법</strong></p>
-        <div class="no-list">
-          <span class="no-chip">전화 · 문자 031-217-1000</span>
-          <span class="no-chip">이메일 pureland016@naver.com</span>
-          <span class="no-chip">센터 사무실 방문 · 서면</span>
-        </div>
-      </div>
-
-      <div class="note-box">
-        💬 <strong>옆에서 지켜본 동료의 한마디</strong>가 도움이 되는 경우가 많습니다. 센터가 신고 없이 알게 된 사건도 신고된 사건과 똑같이 처리합니다.<br>
-        접수 이후의 처리 기한과 익명성 보장은 <a href="grievance.html" style="color:#8A6314;font-weight:700;">고충처리지침 교육</a>에서 자세히 확인하실 수 있습니다.
-      </div>
-
-      <p style="font-size:17px;font-weight:700;color:#3A3A38;margin:16px 0 8px 4px;">외부 상담 창구</p>
-      <div class="outside-list">
-        <div class="outside-item">
-          <span class="outside-name">고용평등상담지원관</span>
-          <span class="outside-tel">1551-9811</span>
-        </div>
-        <div class="outside-item">
-          <span class="outside-name">고용노동부 고객상담센터</span>
-          <span class="outside-tel">1350</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== 챕터 6 ===== -->
-    <div class="chapter" id="ch6">
-      <div class="chapter-header">
-        <span class="chapter-icon">🛡️</span>
-        <div class="chapter-meta">
-          <div class="chapter-tag">CHAPTER 6</div>
-          <h2>말한 사람의 보호</h2>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <p>말씀하시는 것이 걱정되실 수 있습니다. 그래서 센터는 <strong>네 가지로 보호</strong>합니다.</p>
-      </div>
-
-      <div class="protect-list">
-        <div class="protect-card">
-          <span class="protect-icon">⏱️</span>
-          <div class="protect-body">
-            <div class="protect-title">조사가 끝나지 않았어도</div>
-            <div class="protect-desc">확인 전 조사 기간에도 근무 장소 변경이나 유급휴가가 가능합니다. 본인이 원하지 않으면 하지 않습니다.</div>
+        <div class="protect-list">
+          <div class="protect-card">
+            <span class="protect-icon">⏱️</span>
+            <div class="protect-body">
+              <div class="protect-title">조사가 끝나지 않았어도</div>
+              <div class="protect-desc">확인 전 조사 기간에도 근무 장소 변경이나 유급휴가가 가능합니다. 본인이 원하지 않으면 하지 않습니다.</div>
+            </div>
+          </div>
+          <div class="protect-card">
+            <span class="protect-icon">🔒</span>
+            <div class="protect-body">
+              <div class="protect-title">비밀을 지킵니다</div>
+              <div class="protect-desc">처리에 관여한 사람은 누가 신고했는지, 어떤 내용이었는지 밖으로 옮길 수 없습니다.</div>
+            </div>
+          </div>
+          <div class="protect-card">
+            <span class="protect-icon">🚫</span>
+            <div class="protect-body">
+              <div class="protect-title">불이익을 주지 않습니다</div>
+              <div class="protect-desc">신고했다는 이유로 어떤 불리한 처우도 하지 않습니다.</div>
+            </div>
+          </div>
+          <div class="protect-card">
+            <span class="protect-icon">👀</span>
+            <div class="protect-body">
+              <div class="protect-title">끝난 뒤에도 살핍니다</div>
+              <div class="protect-desc">사건이 끝난 뒤에도 2차 피해나 불이익이 없는지 계속 확인합니다.</div>
+            </div>
           </div>
         </div>
-        <div class="protect-card">
-          <span class="protect-icon">🔒</span>
-          <div class="protect-body">
-            <div class="protect-title">비밀을 지킵니다</div>
-            <div class="protect-desc">처리에 관여한 사람은 누가 신고했는지, 어떤 내용이었는지 밖으로 옮길 수 없습니다.</div>
+
+        <div class="info-card">
+          <p><strong>금지되는 불리한 처우</strong></p>
+          <div class="no-list">
+            <span class="no-chip">해고 · 파면</span>
+            <span class="no-chip">징계 · 정직 · 감봉</span>
+            <span class="no-chip">담당 업무 변경</span>
+            <span class="no-chip">성과·임금 차별</span>
+            <span class="no-chip">교육 기회 제한</span>
+            <span class="no-chip">집단 따돌림</span>
+            <span class="no-chip">신고 취하 압박</span>
           </div>
         </div>
-        <div class="protect-card">
-          <span class="protect-icon">🚫</span>
-          <div class="protect-body">
-            <div class="protect-title">불이익을 주지 않습니다</div>
-            <div class="protect-desc">신고했다는 이유로 어떤 불리한 처우도 하지 않습니다.</div>
+
+        <div class="accent-banner">
+          <div class="ab-title">2차 피해</div>
+          <p>수군거리는 말, <strong>"양쪽 다 문제다"</strong>라는 말은 피해자에게 처음 피해 못지않은 상처가 됩니다. 우리 모두가 함께 조심해야 할 부분입니다.</p>
+        </div>
+      </div>
+
+      <!-- ===== 챕터 7 ===== -->
+      <div class="chapter" id="ch7">
+        <div class="chapter-header">
+          <span class="chapter-icon">👥</span>
+          <div class="chapter-meta">
+            <div class="chapter-tag">CHAPTER 7</div>
+            <h2>관리자와 직원의 책임</h2>
           </div>
         </div>
-        <div class="protect-card">
-          <span class="protect-icon">👀</span>
-          <div class="protect-body">
-            <div class="protect-title">끝난 뒤에도 살핍니다</div>
-            <div class="protect-desc">사건이 끝난 뒤에도 2차 피해나 불이익이 없는지 계속 확인합니다.</div>
+
+        <div class="split-grid">
+          <div class="split-card">
+            <div class="split-who">관리자</div>
+            <div class="split-title">혼자 판단하지 않습니다</div>
+            <div class="split-desc">자의적으로 판단해 해결하려 하지 않고, 피해자의 이야기를 경청하고 절차를 안내합니다. 분리 요청은 <strong>지체 없이</strong> 조치합니다. 대질조사 강행·행위자 두둔·피해자 비난은 금지됩니다.</div>
+          </div>
+          <div class="split-card other">
+            <div class="split-who">모든 직원</div>
+            <div class="split-title">알게 되면 안내합니다</div>
+            <div class="split-desc">피해 사실을 알게 되면 신고하도록 안내합니다. 사건을 은폐·축소하거나, 관련인의 신원을 발설하거나, 처리 담당자를 압박하는 일은 하지 않습니다.</div>
           </div>
         </div>
-      </div>
 
-      <div class="info-card">
-        <p><strong>금지되는 불리한 처우</strong></p>
-        <div class="no-list">
-          <span class="no-chip">해고 · 파면</span>
-          <span class="no-chip">징계 · 정직 · 감봉</span>
-          <span class="no-chip">담당 업무 변경</span>
-          <span class="no-chip">성과·임금 차별</span>
-          <span class="no-chip">교육 기회 제한</span>
-          <span class="no-chip">집단 따돌림</span>
-          <span class="no-chip">신고 취하 압박</span>
+        <div class="closing-card">
+          <p class="ck-line">
+            서로를 존중하는 자리가,<br>
+            오래 일할 수 있는 자리입니다
+          </p>
+          <div class="closing-badges">
+            <span>업무 관련성</span>
+            <span>듣는 사람 기준</span>
+            <span>비밀 보장</span>
+            <span>불이익 금지</span>
+          </div>
+          <p class="ck-sub">(주)효자노치원 · 직원 교육</p>
+        </div>
+
+        <div class="legal-box">
+          <strong>근거</strong> — 「남녀고용평등과 일·가정 양립 지원에 관한 법률」 제12조(금지) · 제13조(예방교육) · 제14조(발생 시 조치) · 제14조의2(고객 등에 의한 성희롱 방지), 센터 「직장 내 성희롱 예방지침」(4장 16조).<br>
+          본 페이지는 같은 법 제13조 제3항에 따라 <strong>예방교육의 내용을 직원이 언제든 열람할 수 있도록 상시 게시</strong>하는 자료입니다. 지침 전문은 센터 사무실에서 열람하실 수 있습니다.
         </div>
       </div>
 
-      <div class="accent-banner">
-        <div class="ab-title">2차 피해</div>
-        <p>수군거리는 말, <strong>"양쪽 다 문제다"</strong>라는 말은 피해자에게 처음 피해 못지않은 상처가 됩니다. 우리 모두가 함께 조심해야 할 부분입니다.</p>
-      </div>
-    </div>
-
-    <!-- ===== 챕터 7 ===== -->
-    <div class="chapter" id="ch7">
-      <div class="chapter-header">
-        <span class="chapter-icon">👥</span>
-        <div class="chapter-meta">
-          <div class="chapter-tag">CHAPTER 7</div>
-          <h2>관리자와 직원의 책임</h2>
-        </div>
-      </div>
-
-      <div class="split-grid">
-        <div class="split-card">
-          <div class="split-who">관리자</div>
-          <div class="split-title">혼자 판단하지 않습니다</div>
-          <div class="split-desc">자의적으로 판단해 해결하려 하지 않고, 피해자의 이야기를 경청하고 절차를 안내합니다. 분리 요청은 <strong>지체 없이</strong> 조치합니다. 대질조사 강행·행위자 두둔·피해자 비난은 금지됩니다.</div>
-        </div>
-        <div class="split-card other">
-          <div class="split-who">모든 직원</div>
-          <div class="split-title">알게 되면 안내합니다</div>
-          <div class="split-desc">피해 사실을 알게 되면 신고하도록 안내합니다. 사건을 은폐·축소하거나, 관련인의 신원을 발설하거나, 처리 담당자를 압박하는 일은 하지 않습니다.</div>
-        </div>
-      </div>
-
-      <div class="closing-card">
-        <p class="ck-line">
-          서로를 존중하는 자리가,<br>
-          오래 일할 수 있는 자리입니다
-        </p>
-        <div class="closing-badges">
-          <span>업무 관련성</span>
-          <span>듣는 사람 기준</span>
-          <span>비밀 보장</span>
-          <span>불이익 금지</span>
-        </div>
-        <p class="ck-sub">(주)효자노치원 · 직원 교육</p>
-      </div>
-
-      <div class="legal-box">
-        <strong>근거</strong> — 「남녀고용평등과 일·가정 양립 지원에 관한 법률」 제12조(금지) · 제13조(예방교육) · 제14조(발생 시 조치) · 제14조의2(고객 등에 의한 성희롱 방지), 센터 「직장 내 성희롱 예방지침」(4장 16조).<br>
-        본 페이지는 같은 법 제13조 제3항에 따라 <strong>예방교육의 내용을 직원이 언제든 열람할 수 있도록 상시 게시</strong>하는 자료입니다. 지침 전문은 센터 사무실에서 열람하실 수 있습니다.
-      </div>
     </div>
 
     <div class="footer-note">&copy; 2026 (주)효자노치원</div>
