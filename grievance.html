@@ -196,16 +196,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 10px;
-    }
-    .channel-card .ch-num {
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      background: #0F766E;
-      color: #fff;
-      font-size: 16px; font-weight: 800;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+      margin-bottom: 8px;
     }
     .channel-card .ch-title {
       font-size: 20px; font-weight: 800;
@@ -214,26 +205,10 @@
     .channel-card .ch-desc {
       font-size: 19px; color: #222;
       line-height: 1.65;
-      margin-bottom: 10px;
-    }
-    .channel-photo {
-      width: 100%;
-      max-width: 320px;
-      margin: 6px auto 10px;
-      display: block;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .channel-caption {
-      display: block;
-      text-align: center;
-      font-size: 17px; color: #555;
-      margin-top: 4px;
     }
 
     /* 연락처 카드 — 그 외 접수 방법 */
     .contact-card {
-      margin-top: 16px;
       background: #fff;
       border-radius: 14px;
       padding: 14px 16px;
@@ -563,7 +538,6 @@
         transform: translateY(-3px);
         box-shadow: 0 8px 20px rgba(15,118,110,0.1);
       }
-      .channel-photo { max-width: 100%; }
 
       .contact-card { margin-top: 0; }
 
@@ -716,12 +690,9 @@
           <!-- 오프라인 고충처리함 -->
           <div class="channel-card">
             <div class="ch-head">
-              <span class="ch-num">1</span>
               <span class="ch-title">사무실 고충처리함</span>
             </div>
             <p class="ch-desc">센터 사무실에 비치된 고충처리함에 쪽지를 넣어주세요.</p>
-            <img class="channel-photo" src="images/grievance-box.jpg" alt="사무실 고충처리함">
-            <span class="channel-caption">📍 센터 사무실 비치</span>
           </div>
 
           <!-- 그 외 접수 방법 — 연락처 -->
